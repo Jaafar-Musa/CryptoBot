@@ -1,6 +1,7 @@
 from telegram import Bot, Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from db import db
+from marketAPI import get_current_price
 
 def hello(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(f'Hello {update.effective_user.first_name}')
@@ -23,13 +24,19 @@ def sold_crypto():
 def profit_from():
     # returns profits from individual tokens
     #? $ADA +$20 up by x%
+    crypto = db.owned_crypto
+    data = crypto.find({name:"ADA"})
     pass
 
 
 def total_profit():
+    crypto = db.owned_crypto
+    data = crypto.find()
+    get_current_price("BTC")
+    for d in data:
+
     # returns total profit
     #? +20 x%
-    pass
 
 
 def portfolio():
