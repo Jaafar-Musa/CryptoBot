@@ -4,6 +4,7 @@ from decouple import config
 import json
 
 # error_code != 400
+# 
 def get_current_price(token):
     url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion'
     parameters = {
