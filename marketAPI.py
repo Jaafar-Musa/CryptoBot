@@ -3,7 +3,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from decouple import config
 import json
 
-
+# error_code != 400
 def get_current_price(token):
     url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion'
     parameters = {
@@ -14,7 +14,6 @@ def get_current_price(token):
         'Accepts': 'application/json',
         'X-CMC_PRO_API_KEY': config('COINMARKET_API_KEY')
     }
-
     session = Session()
     session.headers.update(headers)
 
@@ -25,3 +24,7 @@ def get_current_price(token):
         return current_price
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         return exit
+
+
+if __name__ == "__main__":
+    get_current_price("sjdjdjd")
